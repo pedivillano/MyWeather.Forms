@@ -33,7 +33,7 @@ echo "IOS_PATHS = $IOS_PATHS"
 echo "hello line33"
 for p in "$IOS_PATHS"; do
   echo "Removing $p from $SLN_PATH" || true
-  dotnet sln $SLN_PATH remove $p || true
+  sudo dotnet sln $SLN_PATH remove $p || true
 done
 fi
 fi
