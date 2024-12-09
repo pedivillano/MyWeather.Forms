@@ -30,6 +30,8 @@ echo "No iOS CSPROJ files found. No Action taken."
 else
 echo "IOS_PATHS = $IOS_PATHS"
 ​
+
+echo "hello lin33"
 for p in "$IOS_PATHS"; do
   echo "Removing $p from $SLN_PATH" || true
   dotnet sln $SLN_PATH remove $p || true
