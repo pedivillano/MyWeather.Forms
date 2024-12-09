@@ -5,6 +5,8 @@ echo $APPCENTER_SOURCE_DIRECTORY
 SLN_FILE=$APPCENTER_SOURCE_DIRECTORY/MyWeather.sln
 WINDOWS_CSPROJ_FILE=$APPCENTER_SOURCE_DIRECTORY/MyWeather.UWP/MyWeather.UWP.csproj
 dotnet sln $SLN_FILE remove $WINDOWS_CSPROJ_FILE
+
+set -e
  
 export RemoveIOSProjects=true
  
@@ -17,23 +19,20 @@ else
 echo "SLN_PATH = $SLN_PATH"
 fi
  
- 
 if [ -z "$RemoveIOSProjects" ]; then
 echo "Do Not Remove iOS Projects"
 else
 echo "Searching for iOS Projects"
 IOS_PATHS=$(find "$APPCENTER_SOURCE_DIRECTORY" -iname '*iOS*.csproj' -type f -print0)
  
- 
 if [ -z "$IOS_PATHS" ]; then
 echo "No iOS CSPROJ files found. No Action taken."
 else
-echo "hello line31"
 echo "IOS_PATHS = $IOS_PATHS"
-echo "hello line33"
+ 
 for p in "$IOS_PATHS"; do
-  echo "Removing $p from $SLN_PATH" || true
-  sudo dotnet sln $SLN_PATH remove $p || true
+echo "Removing $p from $SLN_PATH" || true
+sudo dotnet sln $SLN_PATH remove $p || true
 done
 fi
 fi
