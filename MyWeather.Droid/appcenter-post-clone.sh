@@ -28,10 +28,11 @@ IOS_PATHS=$(find "$APPCENTER_SOURCE_DIRECTORY" -iname '*iOS*.csproj' -type f -pr
 if [ -z "$IOS_PATHS" ]; then
 echo "No iOS CSPROJ files found. No Action taken."
 else
+echo "hello line31"
 echo "IOS_PATHS = $IOS_PATHS"
 ​
 
-echo "hello lin33"
+echo "hello line33"
 for p in "$IOS_PATHS"; do
   echo "Removing $p from $SLN_PATH" || true
   dotnet sln $SLN_PATH remove $p || true
